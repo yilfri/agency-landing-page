@@ -11,12 +11,27 @@ const Container = styled.div`
 
 const Left = styled.div`
 	width: 50%;
+	position: relative;
 `;
 
 const Image = styled.img`
 	display: ${(props) => (props.open ? 'none' : 'block')};
 	height: 100%;
-	margin-left: 50px;
+	transition: 0.4s;
+`;
+
+const Video = styled.video`
+	display: ${(props) => (!props.open ? 'none' : 'block')};
+	height: 300px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	transition: 0.4s;
+	@media only screen and (max-width: 480px) {
+		width: 100%;
+	}
 `;
 
 const Right = styled.div`
@@ -69,6 +84,13 @@ const Service = () => {
 		<Container>
 			<Left>
 				<Image open={open} src={How} />
+				<Video
+					open={open}
+					autoPlay
+					loop
+					controls
+					src="https://player.vimeo.com/external/449759244.sd.mp4?s=d5f3da46ddc17aa69a7de84f1e420610ebd2a391&profile_id=139&oauth2_token_id=57447761"
+				/>
 			</Left>
 			<Right>
 				<Wrapper>
